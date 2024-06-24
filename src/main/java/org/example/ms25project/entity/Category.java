@@ -7,7 +7,12 @@ import lombok.*;
 import java.util.Objects;
 
 @Entity
-@Table
+@Table(uniqueConstraints = {
+        @UniqueConstraint(
+                name = "UNIQUE_CATEGORY",
+                columnNames = {"name"}
+        )
+})
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
