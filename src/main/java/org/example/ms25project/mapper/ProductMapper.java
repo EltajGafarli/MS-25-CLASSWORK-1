@@ -12,7 +12,6 @@ public class ProductMapper {
                 .name(dto.getName())
                 .description(dto.getDescription())
                 .price(dto.getPrice())
-                .category(dto.getCategory())
                 .build();
     }
 
@@ -20,7 +19,6 @@ public class ProductMapper {
         return ProductDto
                 .builder()
                 .name(products.getName())
-                .category(products.getCategory())
                 .description(products.getDescription())
                 .price(products.getPrice())
                 .build();
