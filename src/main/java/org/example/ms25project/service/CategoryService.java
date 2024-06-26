@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.ms25project.dto.CategoryDto;
 import org.example.ms25project.entity.Category;
 import org.example.ms25project.exception.AlreadyExistException;
+import org.example.ms25project.exception.NotFoundException;
 import org.example.ms25project.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
@@ -35,10 +36,21 @@ public class CategoryService {
     }
 
 
+    public CategoryDto getCategory(long id) {
+        return this.categoryToDto(
+                this.categoryRepository.findById(id)
+                        .orElseThrow(() -> new NotFoundException("Category not found"))
+        );
+    }
+
+
+
+
     private CategoryDto categoryToDto(Category category) {
         return CategoryDto
                 .builder()
                 .name(category.getName())
                 .build();
     }
+
 }

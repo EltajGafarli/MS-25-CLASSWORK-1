@@ -1,13 +1,10 @@
 package org.example.ms25project.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "products", uniqueConstraints = {
@@ -33,28 +30,24 @@ public class Products {
     @JoinColumn(name = "product_details_id", referencedColumnName = "id")
     private ProductDetails productDetails;
 
-    @OneToMany(cascade = {
-            CascadeType.DETACH,
-            CascadeType.REFRESH,
+    @ManyToOne(cascade = {
+            CascadeType.PERSIST,
             CascadeType.MERGE,
-            CascadeType.PERSIST
+            CascadeType.REFRESH,
+            CascadeType.DETACH
     },
-    mappedBy = "products")
-    @JsonIgnore
-    private Set<Category> categories = new HashSet<>();
-
-
-    public void addCategory(Category category) {
-        this.categories.add(category);
-    }
-
+            fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Category category;
 
 
     @Override
     public int hashCode() {
         return Objects
                 .hash(
-                        id, name, price, description, productDetails, categories
+                        id, name, price, description, productDetails, category
                 );
     }
 
@@ -68,6 +61,6 @@ public class Products {
                 && Objects.equals(price, products.price)
                 && Objects.equals(description, products.description)
                 && Objects.equals(productDetails, products.productDetails)
-                && Objects.equals(categories, products.categories);
+                && Objects.equals(category, products.category);
     }
 }

@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.ms25project.dto.ProductDetailsDto;
 import org.example.ms25project.entity.ProductDetails;
+import org.example.ms25project.exception.NotFoundException;
 import org.example.ms25project.repository.ProductDetailsRepository;
 import org.springframework.stereotype.Repository;
 
@@ -32,6 +33,14 @@ public class ProductDetailsService {
                 .stream()
                 .map(this::productToDto)
                 .toList();
+    }
+
+
+    public ProductDetailsDto getProductDetails(long detailsId) {
+        return this.productToDto(
+                this.productDetailsRepository.findById(detailsId)
+                        .orElseThrow(() -> new NotFoundException("Product Details Not Found"))
+        );
     }
 
 
