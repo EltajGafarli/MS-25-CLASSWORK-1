@@ -5,5 +5,6 @@ import org.example.ms25project.entity.Category;
 
 public interface ProductProjection {
     Category getCategory();
+
     Integer getCnt();
 }

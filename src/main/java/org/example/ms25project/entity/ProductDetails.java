@@ -26,7 +26,7 @@ public class ProductDetails {
             CascadeType.PERSIST,
             CascadeType.REFRESH
     },
-    mappedBy = "productDetails")
+            mappedBy = "productDetails")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Products products;
@@ -40,7 +40,7 @@ public class ProductDetails {
 
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof ProductDetails productDetails)) {
+        if (!(obj instanceof ProductDetails productDetails)) {
             return false;
         }
 

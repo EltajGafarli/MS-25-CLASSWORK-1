@@ -1,8 +1,10 @@
 package org.example.ms25project.service;
 
 import jakarta.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
-import org.example.ms25project.dto.CategoryDto;
 import org.example.ms25project.dto.ProductDto;
 import org.example.ms25project.entity.Category;
 import org.example.ms25project.entity.ProductDetails;
@@ -15,10 +17,6 @@ import org.example.ms25project.repository.ProductsRepository;
 import org.example.ms25project.repository.proj.ProductProjection;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -48,9 +46,10 @@ public class ProductsService {
     public List<Map<Category, Integer>> findCountByCategory() {
         List<ProductProjection> productCount = productsRepository.findProductCount();
         List<Map<Category, Integer>> result = new ArrayList<>();
-        for(var proj: productCount) {
+        for (var proj : productCount) {
             result.add(Map.of(proj.getCategory(), proj.getCnt()));
         }
+
         return result;
     }
 
@@ -59,7 +58,6 @@ public class ProductsService {
         this.productsRepository.deleteById(id);
         return "Product delete successfully";
     }
-
 
 
     public ProductDto addCategory(long prodId, long categoryId) {

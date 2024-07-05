@@ -47,7 +47,7 @@ public class Category implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof Category)) {
+        if (!(obj instanceof Category)) {
             return false;
         }
 

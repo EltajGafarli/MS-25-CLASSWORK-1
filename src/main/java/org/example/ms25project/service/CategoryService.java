@@ -19,7 +19,9 @@ public class CategoryService {
 
     public String createCategory(CategoryDto dto) {
         categoryRepository.findByName(dto.getName())
-                .ifPresent((category) -> {throw new AlreadyExistException("Category already exist");});
+                .ifPresent((category) -> {
+                    throw new AlreadyExistException("Category already exist");
+                });
 
         Category category = Category.builder()
                 .name(dto.getName())
@@ -42,8 +44,6 @@ public class CategoryService {
                         .orElseThrow(() -> new NotFoundException("Category not found"))
         );
     }
-
-
 
 
     private CategoryDto categoryToDto(Category category) {

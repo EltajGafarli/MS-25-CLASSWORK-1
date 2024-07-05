@@ -3,7 +3,6 @@ package org.example.ms25project.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-
 import java.util.Objects;
 
 @Entity
@@ -54,7 +53,7 @@ public class Products {
 
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof Products products)) return false;
+        if (!(obj instanceof Products products)) return false;
         return Objects
                 .equals(id, products.id)
                 && Objects.equals(name, products.name)
