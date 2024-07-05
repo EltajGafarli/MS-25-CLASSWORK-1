@@ -6,11 +6,11 @@ import org.example.ms25project.dto.ProductDetailsDto;
 import org.example.ms25project.entity.ProductDetails;
 import org.example.ms25project.exception.NotFoundException;
 import org.example.ms25project.repository.ProductDetailsRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Repository
+@Service
 @RequiredArgsConstructor
 @Transactional(rollbackOn = Exception.class)
 public class ProductDetailsService {
