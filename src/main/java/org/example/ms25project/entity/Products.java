@@ -3,7 +3,9 @@ package org.example.ms25project.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "products", uniqueConstraints = {
@@ -25,7 +27,7 @@ public class Products {
     @Column(columnDefinition = "text")
     private String description;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "product_details_id", referencedColumnName = "id")
     private ProductDetails productDetails;
 
@@ -40,6 +42,14 @@ public class Products {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Category category;
+
+
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY, mappedBy = "products")
+    private Set<ShoppingCarts> shoppingCarts = new HashSet<>();
+
+    public void addShoppingCart(ShoppingCarts shoppingCart) {
+        this.shoppingCarts.add(shoppingCart);
+    }
 
 
     @Override
@@ -62,4 +72,5 @@ public class Products {
                 && Objects.equals(productDetails, products.productDetails)
                 && Objects.equals(category, products.category);
     }
+
 }

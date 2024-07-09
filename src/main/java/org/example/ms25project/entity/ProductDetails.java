@@ -26,7 +26,7 @@ public class ProductDetails {
             CascadeType.PERSIST,
             CascadeType.REFRESH
     },
-            mappedBy = "productDetails")
+            mappedBy = "productDetails", fetch = FetchType.EAGER)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Products products;
