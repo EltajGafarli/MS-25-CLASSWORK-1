@@ -27,7 +27,7 @@ public class ShoppingCarts {
             CascadeType.PERSIST,
             CascadeType.REFRESH
     },
-    fetch = FetchType.LAZY)
+            fetch = FetchType.LAZY)
     @JoinTable(name = "shoppingcart_product", joinColumns = @JoinColumn(name = "shopping_id"), inverseJoinColumns = @JoinColumn(name = "products_id"))
     private Set<Products> products = new HashSet<>();
 

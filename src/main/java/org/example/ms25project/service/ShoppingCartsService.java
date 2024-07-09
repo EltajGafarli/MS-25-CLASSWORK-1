@@ -64,8 +64,7 @@ public class ShoppingCartsService {
         ShoppingCarts shoppingCart = this.shoppingRepository.findById(cartId).orElseThrow(() -> new NotFoundException("Shopping cart not found"));
         Set<Products> products = shoppingCart.getProducts();
         List<ProductResponseDto> productResponses = new ArrayList<>();
-
-        for(var prod: products) {
+        for (var prod : products) {
             ProductDetails productDetails = prod.getProductDetails();
             ProductResponseDto productResponse = ProductResponseDto
                     .builder()
@@ -73,8 +72,7 @@ public class ShoppingCartsService {
                     .price(prod.getPrice())
                     .description(prod.getDescription())
                     .build();
-
-            if(productDetails != null) {
+            if (productDetails != null) {
                 productResponse
                         .setProductDetails(
                                 ProductDetailsDto
