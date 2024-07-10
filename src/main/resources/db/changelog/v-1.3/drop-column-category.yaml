@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20241007
+      author: EltajGafarli
+      changes:
+        - dropColumn:
+            tableName: categories
+            columnName: test

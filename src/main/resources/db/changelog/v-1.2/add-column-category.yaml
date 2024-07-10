@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20241007
+      author: EltajGafarli
+      changes:
+        - addColumn:
+            tableName: categories
+            columns:
+              - column:
+                  name: test
+                  type: varchar(50)
+                  constraints:
+                    nullable: true

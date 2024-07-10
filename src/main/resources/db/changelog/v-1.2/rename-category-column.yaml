@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20241007
+      author: EltajGafarli
+      changes:
+        - renameColumn:
+            tableName: categories
+            oldColumnName: name
+            newColumnName: category_name
+            columnDataType: varchar(255)

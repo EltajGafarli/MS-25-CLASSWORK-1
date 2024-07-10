@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20241007
+      author: EltajGafarli
+      changes:
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: price
+                  type: int
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: product_details_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: category_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            constraintName: FK_PRODUCT_PRODUCT_DETAILS
+            baseTableName: products
+            baseColumnNames: product_details_id
+            referencedTableName: product_details
+            referencedColumnNames: id
+        - addForeignKeyConstraint:
+            constraintName: FK_PRODUCTS_CATEGORY
+            baseTableName: products
+            baseColumnNames: category_id
+            referencedTableName: category
+            referencedColumnNames: id

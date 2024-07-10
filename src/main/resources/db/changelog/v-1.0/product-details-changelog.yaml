@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20241007
+      author: EltajGafarli
+      changes:
+        - createTable:
+            tableName: product_details
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: color
+                  type: varchar(255)
+              - column:
+                  name: image_url
+                  type: varchar(255)

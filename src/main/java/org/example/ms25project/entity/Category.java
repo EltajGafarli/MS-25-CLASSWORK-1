@@ -11,7 +11,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(uniqueConstraints = {
+@Table(name = "categories", uniqueConstraints = {
         @UniqueConstraint(
                 name = "UNIQUE_CATEGORY",
                 columnNames = {"name"}

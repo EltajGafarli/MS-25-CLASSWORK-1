@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20241007
+      author: EltajGafarli
+      changes:
+        - createTable:
+            tableName: shopping_carts
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+  - changeSet:
+      id: 2
+      author: EltajGafarli
+      changes:
+        - createTable:
+            tableName: shoppingcart_product
+            columns:
+              - column:
+                  name: shopping_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: products_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            constraintName: SHOPPING_CARTS_PRODUCT
+            baseTableName: shoppingcart_product
+            baseColumnNames: shopping_id
+            referencedTableName: shopping_carts
+            referencedColumnNames: id
+        - addForeignKeyConstraint:
+            constraintName: FK_SHOPPING_CART_PRODUCT
+            baseTableName: shoppingcart_product
+            baseColumnNames: products_id
+            referencedTableName: products
+            referencedColumnNames: id
