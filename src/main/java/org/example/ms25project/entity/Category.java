@@ -26,6 +26,8 @@ public class Category implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(name = "category_name")
     private String name;
 
     @OneToMany(cascade = {
@@ -47,13 +49,13 @@ public class Category implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Category)) {
+        if (!(obj instanceof Category category)) {
             return false;
         }
 
         return Objects
-                .equals(id, ((Category) obj).id)
-                && Objects.equals(name, ((Category) obj).name);
+                .equals(id, category.id)
+                && Objects.equals(name, category.name);
     }
 
 

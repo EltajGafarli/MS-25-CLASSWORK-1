@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 20241007
+      id: 20240711-2
       author: EltajGafarli
       changes:
         - renameColumn:

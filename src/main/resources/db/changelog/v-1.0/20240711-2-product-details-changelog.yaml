@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: 20240710
+      id: 20240711-2
       author: EltajGafarli
       changes:
         - createTable:
-            tableName: category
+            tableName: product_details
             columns:
               - column:
                   name: id
@@ -14,8 +14,8 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: name
+                  name: color
                   type: varchar(255)
-                  constraints:
-                    unique: true
-                    nullable: false
+              - column:
+                  name: image_url
+                  type: varchar(255)

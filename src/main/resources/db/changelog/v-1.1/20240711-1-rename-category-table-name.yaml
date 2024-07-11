@@ -1,9 +1,8 @@
 databaseChangeLog:
   - changeSet:
-      id: 20241007
+      id: 20240711-1
       author: EltajGafarli
       changes:
         - renameTable:
             oldTableName: category
             newTableName: categories
-#            schemaName: public

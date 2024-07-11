@@ -19,4 +19,5 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgresql
   liquibase:
     enabled: ${LIQUIBASE_ENABLED:true}
+#    change-log: db/changelog/
 

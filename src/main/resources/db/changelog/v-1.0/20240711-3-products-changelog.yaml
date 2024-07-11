@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: 20241007
+      id: 20240711-3
       author: EltajGafarli
       changes:
         - createTable:
-            tableName: shopping_carts
+            tableName: products
             columns:
               - column:
                   name: id
@@ -16,32 +16,34 @@ databaseChangeLog:
               - column:
                   name: name
                   type: varchar(255)
-  - changeSet:
-      id: 2
-      author: EltajGafarli
-      changes:
-        - createTable:
-            tableName: shoppingcart_product
-            columns:
+                  constraints:
+                    unique: true
+                    nullable: false
               - column:
-                  name: shopping_id
+                  name: price
+                  type: int
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: product_details_id
                   type: bigint
                   constraints:
                     nullable: false
               - column:
-                  name: products_id
+                  name: category_id
                   type: bigint
                   constraints:
                     nullable: false
         - addForeignKeyConstraint:
-            constraintName: SHOPPING_CARTS_PRODUCT
-            baseTableName: shoppingcart_product
-            baseColumnNames: shopping_id
-            referencedTableName: shopping_carts
+            constraintName: FK_PRODUCT_PRODUCT_DETAILS
+            baseTableName: products
+            baseColumnNames: product_details_id
+            referencedTableName: product_details
             referencedColumnNames: id
         - addForeignKeyConstraint:
-            constraintName: FK_SHOPPING_CART_PRODUCT
-            baseTableName: shoppingcart_product
-            baseColumnNames: products_id
-            referencedTableName: products
+            constraintName: FK_PRODUCTS_CATEGORY
+            baseTableName: products
+            baseColumnNames: category_id
+            referencedTableName: category
             referencedColumnNames: id

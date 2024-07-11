@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: 20241007
+      id: 20240711-4
       author: EltajGafarli
       changes:
         - createTable:
-            tableName: products
+            tableName: shopping_carts
             columns:
               - column:
                   name: id
@@ -16,34 +16,32 @@ databaseChangeLog:
               - column:
                   name: name
                   type: varchar(255)
-                  constraints:
-                    unique: true
-                    nullable: false
+  - changeSet:
+      id: 20240711-5
+      author: EltajGafarli
+      changes:
+        - createTable:
+            tableName: shoppingcart_product
+            columns:
               - column:
-                  name: price
-                  type: int
-              - column:
-                  name: description
-                  type: text
-              - column:
-                  name: product_details_id
+                  name: shopping_id
                   type: bigint
                   constraints:
                     nullable: false
               - column:
-                  name: category_id
+                  name: products_id
                   type: bigint
                   constraints:
                     nullable: false
         - addForeignKeyConstraint:
-            constraintName: FK_PRODUCT_PRODUCT_DETAILS
-            baseTableName: products
-            baseColumnNames: product_details_id
-            referencedTableName: product_details
+            constraintName: SHOPPING_CARTS_PRODUCT
+            baseTableName: shoppingcart_product
+            baseColumnNames: shopping_id
+            referencedTableName: shopping_carts
             referencedColumnNames: id
         - addForeignKeyConstraint:
-            constraintName: FK_PRODUCTS_CATEGORY
-            baseTableName: products
-            baseColumnNames: category_id
-            referencedTableName: category
+            constraintName: FK_SHOPPING_CART_PRODUCT
+            baseTableName: shoppingcart_product
+            baseColumnNames: products_id
+            referencedTableName: products
             referencedColumnNames: id
