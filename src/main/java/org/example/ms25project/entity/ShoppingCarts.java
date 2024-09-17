@@ -4,6 +4,7 @@ package org.example.ms25project.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -15,7 +16,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Builder
-public class ShoppingCarts {
+public class ShoppingCarts implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

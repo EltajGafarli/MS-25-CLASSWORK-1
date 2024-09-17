@@ -49,6 +49,8 @@ tasks.withType(Checkstyle) {
 }
 
 dependencies {
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     checkstyle "com.puppycrawl.tools:checkstyle:10.17.0"
     checkstyle "com.github.sevntu-checkstyle:sevntu-checks:1.44.1"
 }

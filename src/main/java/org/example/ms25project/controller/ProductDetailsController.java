@@ -1,5 +1,6 @@
 package org.example.ms25project.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.example.ms25project.dto.ProductDetailsDto;
 import org.example.ms25project.service.ProductDetailsService;
@@ -16,6 +17,9 @@ public class ProductDetailsController {
     private final ProductDetailsService productDetailsService;
 
     @PostMapping(path = "/create")
+    @Operation(
+            summary = "Create Product details"
+    )
     public ResponseEntity<String> create(@RequestBody ProductDetailsDto detailsDto) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -26,6 +30,9 @@ public class ProductDetailsController {
 
 
     @GetMapping(path = "/{id}")
+    @Operation(
+            summary = "Get Product Details"
+    )
     public ResponseEntity<ProductDetailsDto> getProductDetails(@PathVariable long id) {
         return ResponseEntity
                 .ok(
@@ -35,6 +42,9 @@ public class ProductDetailsController {
 
 
     @GetMapping
+    @Operation(
+            summary = "Get All Product Details"
+    )
     public ResponseEntity<List<ProductDetailsDto>> getAllProductDetails() {
         return ResponseEntity
                 .ok(

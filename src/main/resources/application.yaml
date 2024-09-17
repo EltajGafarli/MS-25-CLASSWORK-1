@@ -19,5 +19,9 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgresql
   liquibase:
     enabled: ${LIQUIBASE_ENABLED:true}
-#    change-log: db/changelog/
+  #    change-log: db/changelog/
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
 
