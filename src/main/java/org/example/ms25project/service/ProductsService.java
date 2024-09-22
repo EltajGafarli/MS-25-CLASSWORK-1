@@ -32,7 +32,7 @@ public class ProductsService {
     public String createProduct(ProductDto productDto) {
         Products products = productMapper.dtoToProduct(productDto);
         productsRepository.save(products);
-        return "Product Created successfully";
+        return "Product created successfully";
     }
 
 
@@ -57,7 +57,7 @@ public class ProductsService {
 
     public String deleteProduct(long id) {
         this.productsRepository.deleteById(id);
-        return "Product delete successfully";
+        return "Product deleted successfully";
     }
 
 

@@ -14,6 +14,7 @@ import java.util.Set;
 })
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Getter
 @Setter
 @Builder
@@ -30,6 +31,7 @@ public class Products implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "product_details_id", referencedColumnName = "id")
+    @ToString.Exclude
     private ProductDetails productDetails;
 
     @ManyToOne(cascade = {
@@ -46,6 +48,7 @@ public class Products implements Serializable {
 
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY, mappedBy = "products")
+    @ToString.Exclude
     private Set<ShoppingCarts> shoppingCarts = new HashSet<>();
 
     public void addShoppingCart(ShoppingCarts shoppingCart) {

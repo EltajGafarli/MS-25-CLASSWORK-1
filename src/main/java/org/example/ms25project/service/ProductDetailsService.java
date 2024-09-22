@@ -12,10 +12,11 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(rollbackOn = Exception.class)
+
 public class ProductDetailsService {
     private final ProductDetailsRepository productDetailsRepository;
 
+    @Transactional
     public String createAProductDetails(ProductDetailsDto dto) {
         ProductDetails productDetails = ProductDetails
                 .builder()
