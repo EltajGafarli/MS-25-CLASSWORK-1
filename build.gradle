@@ -28,6 +28,9 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.1.0'
     implementation group: 'org.liquibase', name: 'liquibase-core', version: '4.28.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
+    testImplementation group: 'junit', name: 'junit', version: junitVersion
 }
 
 tasks.named('test') {
